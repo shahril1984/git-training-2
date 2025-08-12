@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login Sistem</title>
+<style>
+  :root{
+    --bg:#f3f4f6; --card:#ffffff; --accent:#2563eb; --muted:#6b7280;
+    font-family: Arial, sans-serif;
+  }
+  body{
+    background:var(--bg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+  }
+  .login-box{
+    background:var(--card);
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.1);
+    width:100%;
+    max-width:350px;
+    text-align:center;
+  }
+  .logo{
+    width:80px;
+    height:auto;
+    margin-bottom:15px;
+  }
+  h2{
+    margin:0 0 20px;
+    color:#111827;
+  }
+  label{
+    font-size:14px;
+    margin-bottom:6px;
+    display:block;
+    text-align:left;
+  }
+  input[type="text"],input[type="password"]{
+    width:100%;
+    padding:10px;
+    margin-bottom:15px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    font-size:14px;
+    box-sizing:border-box;
+  }
+  button{
+    width:100%;
+    padding:10px;
+    background:var(--accent);
+    border:none;
+    color:white;
+    border-radius:6px;
+    font-size:15px;
+    cursor:pointer;
+  }
+  button:hover{
+    background:#1e40af;
+  }
+  .msg{
+    font-size:13px;
+    color:red;
+    margin-bottom:10px;
+  }
+  .small-text{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:10px;
+  }
+</style>
+</head>
+<body>
+<div class="login-box">
+  <!-- Tukar 'logo.png' kepada logo sebenar -->
+  <img src="logo.png" alt="Logo" class="logo">
+  <h2>Login Sistem</h2>
+  <div id="msg" class="msg"></div>
+  <form id="loginForm" autocomplete="off">
+    <label for="username">Nama Pengguna</label>
+    <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna" required>
+
+    <label for="password">Kata Laluan</label>
+    <input type="password" id="password" name="password" placeholder="Masukkan kata laluan" required>
+
+    <button type="submit">Log Masuk</button>
+  </form>
+  <div class="small-text">© 2025 Sistem Inventori</div>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const user = document.getElementById('username').value.trim();
+  const pass = document.getElementById('password').value.trim();
+  const msgBox = document.getElementById('msg');
+
+  if(user === "" || pass === ""){
+    msgBox.textContent = "Sila isi semua medan.";
+    return;
+  }
+
+  // Contoh login (demo)
+  if(user === "admin" && pass === "1234"){
+    msgBox.style.color = "green";
+    msgBox.textContent = "Login berjaya!";
+    setTimeout(()=>{ window.location.href = "dashboard.html"; }, 1000);
+  } else {
+    msgBox.style.color = "red";
+    msgBox.textContent = "Nama pengguna atau kata laluan salah.";
+  }
+});
+</script>
+</body>
+</html>
